@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(MyApp());
@@ -13,15 +14,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String text = '';
-
+  int random1 = 0,random2 = 0;
   @override
   void initState(){
-    text = 'initState: Hello World';
+    text = 'Random Number!';
     super.initState();
   }
   void btnTapped(){
     setState(() {
-      text = 'setState: Tapped me!';
+      Random random = new Random();
+      random1 = random.nextInt(6);
+      random2 = random.nextInt(6);
+      text = 'This is your Random Number :';
     });
   }
   Widget build(BuildContext context) {
@@ -36,6 +40,7 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(text),
+              Text(random1.toString()+random2.toString()),
               ElevatedButton(
                 onPressed: btnTapped, 
                 child: Text('Tapped me!'))
